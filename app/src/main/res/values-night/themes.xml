@@ -1,0 +1,13 @@
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/walnut</item>
+        <item name="android:colorBackground">@color/walnut</item>
+        <item name="android:colorPrimary">@color/walnut</item>
+        <item name="android:colorPrimaryDark">@color/walnut</item>
+        <item name="android:colorAccent">@color/brass</item>
+        <item name="android:statusBarColor">@color/walnut</item>
+        <item name="android:navigationBarColor">@color/walnut</item>
+        <item name="android:textColorPrimary">@color/cream</item>
+        <item name="android:textColorSecondary">@color/muted</item>
+    </style>
+</resources>

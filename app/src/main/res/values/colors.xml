@@ -1,0 +1,14 @@
+<resources>
+    <!-- "Reading Room" palette -->
+    <color name="walnut">#2B211B</color>
+    <color name="panel">#33271F</color>
+    <color name="track">#4A3A2F</color>
+    <color name="outline">#6B5644</color>
+    <color name="brass">#C9A15A</color>
+    <color name="brass_light">#E2C48A</color>
+    <color name="cream">#F1E6D2</color>
+    <color name="cream_dim">#E2D3B6</color>
+    <color name="muted">#CDBBA0</color>
+    <color name="cloth_green">#3E5B4A</color>
+    <color name="divider">#3D2F26</color>
+</resources>
