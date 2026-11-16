@@ -604,7 +604,8 @@ class MainActivity : ComponentActivity(), NfcAdapter.ReaderCallback {
         return best?.let { DocumentsContract.buildDocumentUriUsingTree(tree, it.second) }
     }
 
-    private val audioExtensions = setOf("mp3", "m4a", "aac", "ogg", "opus", "flac", "wav")
+    // Fallback when a provider reports a generic MIME type (e.g. application/octet-stream).
+    private val audioExtensions = setOf("mp3", "m4a", "aac", "ogg", "opus", "flac", "wav", "amr", "awb", "3ga")
 
     /** Every audio file directly inside the folder, in natural name order (2 before 10). */
     private fun folderTracks(tree: Uri): List<Track> {
