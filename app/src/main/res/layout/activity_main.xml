@@ -244,10 +244,11 @@
         <com.spencer.tagtunes.LineProgress
             android:id="@+id/progress"
             android:layout_width="match_parent"
-            android:layout_height="18dp"
+            android:layout_height="40dp"
             android:layout_marginStart="21dp"
             android:layout_marginEnd="21dp"
-            android:layout_marginTop="18dp" />
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="-11dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -339,7 +340,7 @@
             <com.spencer.tagtunes.LineProgress
                 android:id="@+id/volBar"
                 android:layout_width="0dp"
-                android:layout_height="16dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
                 android:layout_weight="1" />
