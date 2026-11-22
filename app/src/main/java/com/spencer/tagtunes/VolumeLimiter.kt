@@ -25,4 +25,10 @@ class VolumeLimiter(context: Context, private val store: TagStore) {
     fun step(direction: Int) {
         audio.setStreamVolume(AudioManager.STREAM_MUSIC, (current + direction).coerceIn(0, allowed()), 0)
     }
+
+    /** Set the volume from a 0..1 position on the volume bar, never above the limit. */
+    fun setFraction(fraction: Float) {
+        val level = Math.round(fraction * max).coerceIn(0, allowed())
+        if (level != current) audio.setStreamVolume(AudioManager.STREAM_MUSIC, level, 0)
+    }
 }

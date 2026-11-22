@@ -234,6 +234,11 @@ class MainActivity : ComponentActivity(), NfcAdapter.ReaderCallback {
         }
         findViewById<ImageButton>(R.id.volDown).setOnClickListener { volume.step(-1); updateVolumeBar() }
         findViewById<ImageButton>(R.id.volUp).setOnClickListener { volume.step(+1); updateVolumeBar() }
+        progress.onScrub = { f, done -> scrubTo(f, done) }
+        volBar.onScrub = { f, _ ->
+            volume.setFraction(f)
+            updateVolumeBar()
+        }
         shelf.addOnLayoutChangeListener { _, l, t, r, b, ol, ot, or, ob ->
             if (r - l != or - ol || b - t != ob - ot) shelf.post { sizeCover() }
         }
@@ -462,7 +467,24 @@ class MainActivity : ComponentActivity(), NfcAdapter.ReaderCallback {
         updateProgress()
     }
 
+    /** Drag on the progress line: show the time under the finger, and seek when it lifts. */
+    private fun scrubTo(f: Float, done: Boolean) {
+        val c = controller ?: return
+        val dur = c.duration
+        if (dur == C.TIME_UNSET || dur <= 0 || !c.isCurrentMediaItemSeekable) {
+            updateProgress()
+            return
+        }
+        val pos = (dur * f).toLong().coerceIn(0, dur)
+        timeElapsed.text = clock(pos)
+        if (done) {
+            c.seekTo(pos)
+            updateProgress()
+        }
+    }
+
     private fun updateProgress() {
+        if (progress.isDragging) return
         val c = controller
         val dur = c?.duration ?: C.TIME_UNSET
         if (c != null && dur != C.TIME_UNSET && dur > 0) {
